@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CrudWebApi1.props" />
+</Project>

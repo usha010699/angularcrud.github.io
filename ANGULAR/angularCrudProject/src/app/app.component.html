@@ -1,0 +1,64 @@
+
+  <div>
+    <form [formGroup]="employeeFormGroup" (ngSubmit)="onSubmit()">
+      <div>
+        <label>Name</label>
+        <label><input type="text" formControlName="name"  >
+        <div *ngIf="f['name'].touched || f['name'].invalid">
+          <div *ngIf="f['name'].hasError('required')">Name is required </div>
+        </div>
+      </label>
+      </div>
+      <br>
+      <div>
+        <label>Mobile</label>
+        <label><input type="text" formControlName="mobileNo" name="mobileNo" > 
+          <div *ngIf="f['mobileNo'].touched || f['mobileNo'].invalid">
+            <div *ngIf="f['mobileNo'].hasError('required')">mobileNo is required </div>
+          </div>
+        </label>
+      </div>
+      <br>
+      <div>
+        <label>Email</label>
+        
+        <label><input type="text" formControlName="emailID">
+          <div *ngIf="f['emailID'].touched || f['emailID'].invalid">
+            <div *ngIf="f['emailID'].hasError('email')">emailID is required </div>
+          </div>
+        </label>
+      </div>
+      <br>
+      <div>
+        <button type="submit" [disabled]="!employeeFormGroup.valid">Create</button>
+      </div>
+      
+    </form>
+  </div>
+
+
+  <div>
+    <table rules="all" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>mobile</th>
+          <th>email</th>
+          <th colspan="2">Action</th>
+          
+        </tr>
+        
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of EmpArr">
+          <td>{{e.name}}</td>
+          <td>{{e.mobileNo}}</td>
+          <td>{{e.emailID}}</td>
+          
+            <td><button (click)="fillForm(e)" class="btn btn-link">Edit</button></td>
+            <td><button (click)="deleteForm(e.id)" class="btn btn-link">Delete</button></td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
